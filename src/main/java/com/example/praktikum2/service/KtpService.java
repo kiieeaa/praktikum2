@@ -17,6 +17,8 @@ public class KtpService {
         if (ktpRepository.existsByNomorKtp(ktp.getNomorKtp())) {
             throw new RuntimeException("Nomor KTP sudah terdaftar!");
         }
+        return ktpRepository.save(ktp); // Menyimpan data KTP baru ke database
+
     }
 }
 
