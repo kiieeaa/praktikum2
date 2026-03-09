@@ -23,6 +23,10 @@ public class KtpService {
     public List<Ktp> getAllKtp() {
         return ktpRepository.findAll();
     }
+    public Ktp getKtpById(Integer id) {
+        return ktpRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Data KTP tidak ditemukan!"));
+    }
 }
 
 
