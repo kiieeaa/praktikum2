@@ -8,3 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class KtpService {
+
+    @Autowired
+    private KtpRepository ktpRepository;
+}
