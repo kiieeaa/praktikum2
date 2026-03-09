@@ -20,6 +20,9 @@ public class KtpService {
         return ktpRepository.save(ktp); // Menyimpan data KTP baru ke database
 
     }
+    public List<Ktp> getAllKtp() {
+        return ktpRepository.findAll();
+    }
 }
 
 
