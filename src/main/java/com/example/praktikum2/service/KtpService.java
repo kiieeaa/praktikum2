@@ -27,6 +27,21 @@ public class KtpService {
         return ktpRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Data KTP tidak ditemukan!"));
     }
+    public Ktp updateKtp(Integer id, Ktp detailKtp) {
+        Ktp existingKtp = getKtpById(id);
+
+        if (!existingKtp.getNomorKtp().equals(detailKtp.getNomorKtp()) &&
+                ktpRepository.existsByNomorKtp(detailKtp.getNomorKtp())) {
+            throw new RuntimeException("Nomor KTP sudah terdaftar!");
+        }
+        existingKtp.setNomorKtp(detailKtp.getNomorKtp());
+        existingKtp.setNamaLengkap(detailKtp.getNamaLengkap());
+        existingKtp.setAlamat(detailKtp.getAlamat());
+        existingKtp.setTanggalLahir(detailKtp.getTanggalLahir());
+        existingKtp.setJenisKelamin(detailKtp.getJenisKelamin());
+
+        return ktpRepository.save(existingKtp);
+    }
 }
 
 
