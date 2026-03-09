@@ -11,4 +11,14 @@ public class KtpService {
 
     @Autowired
     private KtpRepository ktpRepository;
+
+    public Ktp addKtp(Ktp ktp) {
+
+        if (ktpRepository.existsByNomorKtp(ktp.getNomorKtp())) {
+            throw new RuntimeException("Nomor KTP sudah terdaftar!");
+        }
+    }
 }
+
+
+
